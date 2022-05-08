@@ -1,7 +1,8 @@
-import './wrapper.scss'
-export function makeWrapper() {
-    const wrapper = document.createElement('div');
-    wrapper.classList.add('wrapper');
+import './wrapper.scss';
 
-    return wrapper;
+export default function makeWrapper() {
+  const wrapper = document.createElement('div');
+  wrapper.classList.add('wrapper');
+
+  return wrapper;
 }

@@ -1,0 +1,51 @@
+.key {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font: bold 14px Verdana;
+  background-color: #f24333ff;
+  border-radius: 3px;
+  user-select: none;
+  cursor: pointer;
+  transition: all 0.2s;
+
+  &:hover {
+    background-color: #da7f77;
+  }
+
+  &_active {
+    background-color: #c52618;
+    border-radius: 6px;
+  }
+}
+
+.hidden {
+  display: none;
+}
+
+.capslock-on {
+  background-color: #8b1b11;
+  border-radius: 10px;
+}
+
+.Backspace {
+  width: 90px;
+}
+
+.Tab {
+  width: 50px;
+}
+
+.CapsLock, .Enter, .ShiftLeft {
+  width: 90px;
+}
+
+.ControlLeft, .ControlRight {
+  width: 60px;
+}
+
+.Space {
+  flex-grow: 1;
+}
