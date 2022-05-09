@@ -1,4 +1,5 @@
 import changeTextareaValue from '../textarea/changeTextareaValue';
+import { lang } from './keyboardKey';
 
 function simulateClickOnShift(shift) {
   const shiftChild = shift.children[0].children[0];
@@ -14,10 +15,32 @@ export default function defineKeyMouseDown(event) {
   const key = event.target.parentNode.parentNode;
   if (key.classList[0] === 'key') {
     if (key.classList[1] === 'MetaLeft'
-    || key.classList[1] === 'ControlLeft'
     || key.classList[1] === 'ControlRight'
-    || key.classList[1] === 'AltLeft'
     || key.classList[1] === 'AltRight') return;
+    if (key.classList[1] === 'ControlLeft') {
+      const control = document.querySelector('.ControlLeft');
+      control.classList.toggle('key_active');
+      return;
+    }
+    if (key.classList[1] === 'AltLeft' && document.querySelector('.ControlLeft').className.includes('key_active')) {
+      const control = document.querySelector('.ControlLeft');
+      control.classList.toggle('key_active');
+      const rus = document.querySelectorAll('.rus');
+      const eng = document.querySelectorAll('.eng');
+      rus.forEach((element) => {
+        element.classList.toggle('hidden');
+      });
+      eng.forEach((element) => {
+        element.classList.toggle('hidden');
+      });
+      if (lang === 'ru') {
+        localStorage.setItem('lang', 'eng');
+      } else {
+        localStorage.setItem('lang', 'ru');
+      }
+      return;
+    }
+    if (key.classList[1] === 'AltLeft') return;
     if (key.classList[1] === 'CapsLock') {
       const capsLock = document.querySelector('.CapsLock');
       capsLock.classList.toggle('capslock-on');
