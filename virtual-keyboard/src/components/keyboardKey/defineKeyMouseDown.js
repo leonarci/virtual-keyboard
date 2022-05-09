@@ -55,6 +55,27 @@ export default function defineKeyMouseDown(event) {
       changeTextareaValue(Delete.innerText, key.classList[1]);
     } else {
       const keys = document.querySelectorAll('.key');
+      const textarea = document.querySelector('#textarea');
+      if (key.classList[1] === 'ArrowLeft') {
+        textarea.selectionStart -= 1;
+        textarea.selectionEnd = textarea.selectionStart;
+        return;
+      }
+      if (key.classList[1] === 'ArrowRight') {
+        textarea.selectionStart += 1;
+        textarea.selectionEnd = textarea.selectionStart;
+        return;
+      }
+      if (key.classList[1] === 'ArrowUp') {
+        textarea.selectionStart = 0;
+        textarea.selectionEnd = textarea.selectionStart;
+        return;
+      }
+      if (key.classList[1] === 'ArrowDown') {
+        textarea.selectionStart = textarea.value.length;
+        textarea.selectionEnd = textarea.selectionStart;
+        return;
+      }
       for (let i = 0; i < keys.length; i += 1) {
         if (key.classList[1] === keys[i].classList[1]) {
           changeTextareaValue(keys[i].innerText, key.classList[1]);

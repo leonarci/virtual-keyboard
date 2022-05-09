@@ -3,6 +3,50 @@ import { lang } from './keyboardKey';
 
 export default function defineKeyDown(event) {
   if (event.code === 'F5') return;
+  if (event.getModifierState('Control')
+  && (event.code === 'KeyC'
+  || event.code === 'KeyV'
+  || event.code === 'KeyA'
+  || event.code === 'KeyX'
+  || event.code === 'KeyZ')) {
+    return;
+  }
+  if ((event.code === 'ArrowLeft'
+  || event.code === 'ArrowRight'
+  || event.code === 'ArrowUp'
+  || event.code === 'ArrowDown')
+  && document.querySelector('#textarea') === document.activeElement) {
+    const arrow = document.querySelector(`.${event.code}`);
+    arrow.classList.add('key_active');
+    return;
+  }
+  if ((event.code === 'ArrowLeft'
+  || event.code === 'ArrowRight'
+  || event.code === 'ArrowUp'
+  || event.code === 'ArrowDown')
+  && document.querySelector('#textarea') !== document.activeElement) {
+    const textarea = document.querySelector('#textarea');
+    if (event.code === 'ArrowLeft') {
+      textarea.selectionStart -= 1;
+      textarea.selectionEnd = textarea.selectionStart;
+      return;
+    }
+    if (event.code === 'ArrowRight') {
+      textarea.selectionStart += 1;
+      textarea.selectionEnd = textarea.selectionStart;
+      return;
+    }
+    if (event.code === 'ArrowUp') {
+      textarea.selectionStart = 0;
+      textarea.selectionEnd = textarea.selectionStart;
+      return;
+    }
+    if (event.code === 'ArrowDown') {
+      textarea.selectionStart = textarea.value.length;
+      textarea.selectionEnd = textarea.selectionStart;
+      return;
+    }
+  }
   event.preventDefault();
   if (event.getModifierState('Control') && event.getModifierState('Alt') && (event.code === 'ControlLeft' || event.code === 'AltLeft')) {
     const control = document.querySelector('.ControlLeft');
@@ -41,25 +85,25 @@ export default function defineKeyDown(event) {
   } else if (event.code === 'ShiftLeft' || event.code === 'ShiftRight') {
     if (event.repeat !== true) {
       const shift = (event.code === 'ShiftLeft') ? document.querySelector('.ShiftLeft') : document.querySelector('.ShiftRight');
-      shift.classList.add('key_active');
-      const caseDown = document.querySelectorAll('.case-down');
-      caseDown.forEach((element) => {
-        element.classList.toggle('hidden');
-      });
-      const caseUp = document.querySelectorAll('.case-up');
-      caseUp.forEach((element) => {
-        element.classList.toggle('hidden');
-      });
+      if (!shift.className.includes('key_active')) {
+        shift.classList.add('key_active');
+        const caseDown = document.querySelectorAll('.case-down');
+        caseDown.forEach((element) => {
+          element.classList.toggle('hidden');
+        });
+        const caseUp = document.querySelectorAll('.case-up');
+        caseUp.forEach((element) => {
+          element.classList.toggle('hidden');
+        });
+      }
     }
   } else if (event.code === 'ControlLeft' || event.code === 'ControlRight') {
     const contol = (event.code === 'ControlLeft') ? document.querySelector('.ControlLeft') : document.querySelector('.ControlRight');
     contol.classList.add('key_active');
   } else if (event.code === 'AltLeft' || event.code === 'AltRight') {
-    event.preventDefault();
     const alt = (event.code === 'AltLeft') ? document.querySelector('.AltLeft') : document.querySelector('.AltRight');
     alt.classList.add('key_active');
   } else if (event.code === 'Tab') {
-    event.preventDefault();
     const Tab = document.querySelector('.Tab');
     Tab.classList.add('key_active');
     changeTextareaValue(String.fromCharCode(9), event.code);

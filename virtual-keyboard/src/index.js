@@ -53,6 +53,7 @@ for (let i = 0; i < row5.length; i += 1) {
 
 document.addEventListener('keydown', (event) => {
   defineKeyDown(event);
+  textarea.scrollTop = textarea.scrollHeight;
 });
 
 document.addEventListener('keyup', (event) => {
@@ -61,6 +62,7 @@ document.addEventListener('keyup', (event) => {
 
 keyboardBody.addEventListener('mousedown', (event) => {
   defineKeyMouseDown(event);
+  textarea.scrollTop = textarea.scrollHeight;
   event.preventDefault();
   if (document.activeElement === textarea) textarea.focus();
 });
