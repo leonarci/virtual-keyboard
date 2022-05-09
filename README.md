@@ -1,2 +1,2 @@
-# leonarci-JSFE2022Q1
-Private repository for @leonarci
+# virtual-keyboard
+Virtual Keyboard task for RS School JavaScript/Front-End 2022Q1 course
