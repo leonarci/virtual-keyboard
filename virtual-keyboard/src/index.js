@@ -14,10 +14,10 @@ import defineKeyMouseDown from './components/keyboardKey/defineKeyMouseDown';
 const wrapper = makeWrapper();
 document.body.appendChild(wrapper);
 
-const h1 = makeHeader('RSS Virtual Keybord');
+const h1 = makeHeader('RSS Virtual Keyboard');
 wrapper.appendChild(h1);
 
-const textarea = makeTextarea('RSS Virtual Keybord');
+const textarea = makeTextarea();
 wrapper.appendChild(textarea);
 
 const keyboardBody = makeKeyboardBody();
