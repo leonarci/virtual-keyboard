@@ -7,7 +7,7 @@ import makeTextarea from './components/textarea/textarea';
 import makeKeyboardBody from './components/keyboardBody/keyboardBody';
 import { makeHeader, makeParagraph } from './components/text/text';
 import KeyboardRow from './components/keyboardRow/keyboardRow';
-import KeyboardKey from './components/keyboardKey/keyboardKey';
+import { KeyboardKey } from './components/keyboardKey/keyboardKey';
 import defineKeyDown from './components/keyboardKey/defineKeyDown';
 import defineKeyUp from './components/keyboardKey/defineKeyUp';
 import defineKeyMouseDown from './components/keyboardKey/defineKeyMouseDown';

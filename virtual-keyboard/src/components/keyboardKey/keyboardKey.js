@@ -1,6 +1,8 @@
 import './keyboardKey.scss';
 
-export default class KeyboardKey {
+export const lang = localStorage.getItem('lang') ?? 'ru';
+
+export class KeyboardKey {
   constructor(...params) {
     [this.keyCode, this.engCaseDown, this.engCaseUp, this.rusCaseDown, this.rusCaseUp] = params;
   }
@@ -21,7 +23,6 @@ export default class KeyboardKey {
     rusCaseUp.classList.add('hidden');
     const eng = document.createElement('span');
     eng.classList.add('eng');
-    eng.classList.add('hidden');
     key.appendChild(eng);
     const engCaseDown = document.createElement('span');
     engCaseDown.innerHTML = this.engCaseDown;
@@ -35,6 +36,11 @@ export default class KeyboardKey {
       rusCaseUp.classList.add('caps');
       engCaseDown.classList.add('caps');
       engCaseUp.classList.add('caps');
+    }
+    if (lang === 'ru') {
+      eng.classList.add('hidden');
+    } else if (lang === 'eng') {
+      rus.classList.add('hidden');
     }
 
     rus.appendChild(rusCaseDown);

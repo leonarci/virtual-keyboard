@@ -1,4 +1,5 @@
 import changeTextareaValue from '../textarea/changeTextareaValue';
+import { lang } from './keyboardKey';
 
 export default function defineKeyDown(event) {
   if (event.code === 'F5') return;
@@ -16,6 +17,11 @@ export default function defineKeyDown(event) {
     eng.forEach((element) => {
       element.classList.toggle('hidden');
     });
+    if (lang === 'ru') {
+      localStorage.setItem('lang', 'eng');
+    } else {
+      localStorage.setItem('lang', 'ru');
+    }
   } else if (event.code === 'MetaLeft') {
     const meta = document.querySelector('.MetaLeft');
     meta.classList.add('key_active');
