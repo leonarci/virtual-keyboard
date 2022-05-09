@@ -36,33 +36,12 @@ export default class KeyboardKey {
       engCaseDown.classList.add('caps');
       engCaseUp.classList.add('caps');
     }
-    // const caps = document.createElement('span');
-    // caps.innerHTML = this.rusCaseUp;
-    // caps.classList.add('caps');
-    // caps.classList.add('hidden');
-    // const shiftCaps = document.createElement('span');
-    // shiftCaps.innerHTML = this.rusCaseDown;
-    // shiftCaps.classList.add('shift-caps');
-    // shiftCaps.classList.add('hidden');
+
     rus.appendChild(rusCaseDown);
     rus.appendChild(rusCaseUp);
     eng.appendChild(engCaseDown);
     eng.appendChild(engCaseUp);
-    // rus.appendChild(caps);
-    // rus.appendChild(shiftCaps);
 
-    // document.addEventListener('keydown', (event) => {
-    //   if (event.code === keyCode) {
-    //     key.classList.toggle('key_active');
-    //     const textarea = document.querySelector('#textarea');
-    //     textarea.value += keyName;
-    //   }
-    // });
-    // document.addEventListener('keyup', (event) => {
-    //   if (event.code === keyCode) {
-    //     key.classList.toggle('key_active');
-    //   }
-    // });
     return key;
   }
 }
