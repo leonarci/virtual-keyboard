@@ -1,7 +1,6 @@
 import {
   row1, row2, row3, row4, row5,
 } from './data/data';
-import './style.scss';
 import makeWrapper from './components/wrapper/wrapper';
 import makeTextarea from './components/textarea/textarea';
 import makeKeyboardBody from './components/keyboardBody/keyboardBody';
@@ -53,7 +52,10 @@ for (let i = 0; i < row5.length; i += 1) {
 
 document.addEventListener('keydown', (event) => {
   defineKeyDown(event);
-  textarea.scrollTop = textarea.scrollHeight;
+  const value = textarea.value.slice(0, textarea.selectionStart);
+  const { length } = value;
+  const newLines = value.match(/\n/g)?.length ?? 0;
+  textarea.scrollTop = (Math.floor((length - newLines) / 63) + newLines - 2) * 25;
 });
 
 document.addEventListener('keyup', (event) => {
@@ -62,7 +64,10 @@ document.addEventListener('keyup', (event) => {
 
 keyboardBody.addEventListener('mousedown', (event) => {
   defineKeyMouseDown(event);
-  textarea.scrollTop = textarea.scrollHeight;
+  const value = textarea.value.slice(0, textarea.selectionStart);
+  const { length } = value;
+  const newLines = value.match(/\n/g)?.length ?? 0;
+  textarea.scrollTop = (Math.floor((length - newLines) / 63) + newLines - 2) * 25;
   event.preventDefault();
   if (document.activeElement === textarea) textarea.focus();
 });

@@ -26,6 +26,8 @@ export default function defineKeyDown(event) {
   || event.code === 'ArrowDown')
   && document.querySelector('#textarea') !== document.activeElement) {
     const textarea = document.querySelector('#textarea');
+    const arrow = document.querySelector(`.${event.code}`);
+    arrow.classList.add('key_active');
     if (event.code === 'ArrowLeft') {
       textarea.selectionStart -= 1;
       textarea.selectionEnd = textarea.selectionStart;
@@ -48,7 +50,8 @@ export default function defineKeyDown(event) {
     }
   }
   event.preventDefault();
-  if (event.getModifierState('Control') && event.getModifierState('Alt') && (event.code === 'ControlLeft' || event.code === 'AltLeft')) {
+  if ((event.getModifierState('Control') && event.code === 'AltLeft')
+  || (event.getModifierState('Alt') && event.code === 'ControlLeft')) {
     const control = document.querySelector('.ControlLeft');
     control.classList.add('key_active');
     const alt = document.querySelector('.AltLeft');
@@ -98,17 +101,17 @@ export default function defineKeyDown(event) {
       }
     }
   } else if (event.code === 'ControlLeft' || event.code === 'ControlRight') {
-    const contol = (event.code === 'ControlLeft') ? document.querySelector('.ControlLeft') : document.querySelector('.ControlRight');
-    contol.classList.add('key_active');
+    const conrtol = (event.code === 'ControlLeft') ? document.querySelector('.ControlLeft') : document.querySelector('.ControlRight');
+    conrtol.classList.add('key_active');
   } else if (event.code === 'AltLeft' || event.code === 'AltRight') {
     const alt = (event.code === 'AltLeft') ? document.querySelector('.AltLeft') : document.querySelector('.AltRight');
     alt.classList.add('key_active');
+    if (event.code === 'AltRight') document.querySelector('.ControlLeft').classList.remove('key_active');
   } else if (event.code === 'Tab') {
     const Tab = document.querySelector('.Tab');
     Tab.classList.add('key_active');
     changeTextareaValue(String.fromCharCode(9), event.code);
   } else if (event.code === 'Enter') {
-    event.preventDefault();
     const Enter = document.querySelector('.Enter');
     Enter.classList.add('key_active');
     changeTextareaValue(String.fromCharCode(10), event.code);
