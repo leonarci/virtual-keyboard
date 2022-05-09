@@ -32,10 +32,19 @@ export class KeyboardKey {
     engCaseUp.classList.add('case-up');
     engCaseUp.classList.add('hidden');
     if (this.keyCode.slice(0, 3) === 'Key') {
-      rusCaseDown.classList.add('caps');
-      rusCaseUp.classList.add('caps');
       engCaseDown.classList.add('caps');
       engCaseUp.classList.add('caps');
+    }
+    if (this.keyCode.slice(0, 3) === 'Key'
+    || this.keyCode === 'Backquote'
+    || this.keyCode === 'BracketLeft'
+    || this.keyCode === 'BracketRight'
+    || this.keyCode === 'Semicolon'
+    || this.keyCode === 'Quote'
+    || this.keyCode === 'Comma'
+    || this.keyCode === 'Period') {
+      rusCaseDown.classList.add('caps');
+      rusCaseUp.classList.add('caps');
     }
     if (lang === 'ru') {
       eng.classList.add('hidden');

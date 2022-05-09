@@ -6,10 +6,11 @@
   align-items: center;
   font: bold 14px Verdana;
   background-color: #f24333ff;
+  color: white;
   border-radius: 3px;
   user-select: none;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all 0.3s;
 
   & span {
     display: flex;
@@ -20,17 +21,32 @@
   }
 
   &:hover {
-    background-color: #b84136;
+    color: black;
+    background-color: lighten($color: #f24333ff, $amount: 15%);
   }
 
   &:active {
-    background-color: #c52618;
-    border-radius: 10px;
+    background-color: #96170b;
+    border-radius: 20px;
   }
 
   &_active {
-    background-color: #c52618;
-    border-radius: 10px;
+    background-color: #96170b;
+    border-radius: 20px;
+  }
+}
+.Tab, .CapsLock, .ShiftLeft, .ControlLeft, .MetaLeft, .AltLeft, .Backspace, .Delete, .Enter, .ShiftRight, .ControlRight, .AltRight, .ArrowLeft, .ArrowRight, .ArrowUp, .ArrowDown {
+  background-color: #2a8f9c;
+  &:hover {
+    background-color: lighten($color: #3dbaca, $amount: 15%);
+  }
+  &:active {
+    background-color: darken($color: #2a8f9c, $amount: 10%);
+    border-radius: 20px;
+  }
+  &.key_active {
+    background-color: darken($color: #2a8f9c, $amount: 10%);
+    border-radius: 20px;
   }
 }
 
@@ -39,7 +55,7 @@
 }
 
 .capslock-on {
-  background-color: #8b1b11;
+  background-color: darken($color: #2a8f9c, $amount: 20%);
   border-radius: 10px;
 }
 
